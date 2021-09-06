@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid bg-dark py-5" style="min-height: 100vh;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-5">
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="input" class="form-label">Input</label>
+                                    <textarea class="form-control" id="input" rows="12" name="input">{% with input = get_flashed_messages(category_filter=["input"]) %}{% if input %}{{ input[0] }}{% endif %}{% endwith %}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="output" class="form-label">Output</label>
+                                    <textarea class="form-control" id="output" rows="12" disabled>{% with output = get_flashed_messages(category_filter=["output"]) %}{% if output %}{{ output[0] }}{% endif %}{% endwith %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-success my-5" value="Generate TLDR" id="submit" />
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
